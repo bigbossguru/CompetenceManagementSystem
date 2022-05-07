@@ -1,0 +1,55 @@
+<style>
+    .menu {
+        background-image: linear-gradient(to bottom, #858585, #9b9b9b, #b1b1b1, #c8c8c8, #dfdfdf, #eaeaea, #f4f4f4, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff);
+    }
+    
+    .menu-item {
+        margin: 0px 10px;
+        color: rgb(72, 68, 75);
+    }
+    
+    .menu-card-line {
+        background-color: #82e600;
+        color: rgb(255, 255, 255);
+    }
+    
+    .menu-tile {
+        transition: .2s;
+    }
+    
+    .menu a {
+        text-decoration: none;
+    }
+    
+    .menu-tile:hover {
+        border-top: 5px solid rgb(134, 231, 7);
+        transform: scale(1.02, 1.02);
+        cursor: pointer;
+    }
+    </style>
+    
+    <div class="menu container mt-0 mt-sm-5 p-5">
+        <div class="row d-flex align-items-center" style="min-height: 60vh;">
+            <div class="col-12 col-lg-6 p-2 d-flex align-items-center">
+                <a href="/menu/settings" class="w-100">
+                    <div class="card w-100 text-center menu-tile shadow" style="min-height: 12rem;">
+                        <i class="fas fa-cogs m-4 display-1 menu-item"></i>
+                        <div class="card-body menu-card-line fw-bold rounded-bottom">
+                            Admin settings
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-lg-6 p-2 d-flex align-items-center ">
+                <a href="/menu/reports" class="w-100">
+                    <div class="card w-100 text-center menu-tile shadow" style="min-height: 12rem;">
+                        <i class="fas fa-users m-4 display-1 menu-item"></i>
+                        <div class="card-body menu-card-line fw-bold rounded-bottom">
+                            Reports
+                        </div>
+                    </div>
+                </a>
+            </div>
+    </div>
+    
+    

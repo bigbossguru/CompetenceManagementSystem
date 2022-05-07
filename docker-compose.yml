@@ -1,0 +1,95 @@
+version: '3.9'
+
+services:
+  web:
+    restart: always
+    build:
+      context: ./backend
+    command: ./entrypoint.sh
+    volumes:
+      - static_volume:/home/backend/staticfiles
+      - media_volume:/home/backend/mediafiles
+      - logs_volume:/home/backend/logs
+    expose:
+      - 8000
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWD=${DB_PASSWD}
+      - DB_PORT=${DB_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DEBUG=${DEBUG}
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/backend/staticfiles
+      - media_volume:/home/backend/mediafiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+      - celery
+  redis:
+    image: redis:6.2-alpine
+  celery:
+    restart: always
+    build:
+      context: ./backend
+    volumes:
+      - media_volume:/home/backend/mediafiles
+      - logs_volume:/home/backend/logs
+    command: celery -A core worker --loglevel=INFO
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWD=${DB_PASSWD}
+      - DB_PORT=${DB_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DEBUG=${DEBUG}
+    depends_on:
+      - redis
+      - web
+  celery-beat:
+    restart: always
+    build:
+      context: ./backend
+    volumes:
+      - media_volume:/home/backend/mediafiles
+      - logs_volume:/home/backend/logs
+    command: celery -A core beat --loglevel=INFO
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWD=${DB_PASSWD}
+      - DB_PORT=${DB_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DEBUG=${DEBUG}
+    depends_on:
+      - redis
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  logs_volume:

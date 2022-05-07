@@ -1,0 +1,63 @@
+<table class="table table-light table-striped table-hover my-3">
+    <caption class="text-end me-4"><i class="fas fa-check text-success"></i> - Competences at expected level <i class="fas fa-times text-danger ms-4"></i> - Competences to be developed</caption>
+    <thead class="table-dark">
+      <tr class="text-center">
+        <th scope="col"><strong>Management Competence</strong></th>
+        <th scope="col">Required Level</th>
+        <th scope="col">Not Yet</th>
+        <th scope="col">1-Learner</th>
+        <th scope="col">2-Skilled</th>
+        <th scope="col">3-Experienced</th>
+        <th scope="col">4-Master</th>
+        <th scope="col">Not Applicable</th>
+        <th scope="col">Related actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% managementComp.forEach( (comp) => { %>
+            <tr class="text-center">
+                <td class="text-start"><%= comp.name %></td>
+                <td class="border-end"><%= comp.reqLevel %></td>
+
+                <% if(comp.rating == "nan" && comp.rating == comp.reqLevel){ %> 
+                    <td class=" text-center"><h6><i class="fas fa-check text-success"></i></h6></td>
+                <% } else if (comp.rating == "nan" && comp.rating != comp.reqLevel){ %>
+                    <td class=" text-center"><h6><i class="fas fa-times text-danger text-center"></i></h6></td>
+                <% } else { %>
+                    <td></td>
+                <% } %>  
+                <% if(comp.rating == "Learner" && comp.rating == comp.reqLevel){ %> 
+                    <td class=" text-center"><h6><i class="fas fa-check text-success"></i></h6></td>
+                <% } else if (comp.rating == "Learner" && comp.rating !== comp.reqLevel){ %>
+                    <td class=" text-center"><h6><i class="fas fa-times text-danger"></i></h6></td>
+                <% } else { %>
+                    <td></td>
+                <% } %>  
+                <% if(comp.rating == "Skilled" && comp.rating == comp.reqLevel){ %> 
+                    <td class=" text-center"><h6><i class="fas fa-check text-success"></i></h6></td>
+                <% } else if (comp.rating == "Skilled" && comp.rating !== comp.reqLevel){ %>
+                    <td class=" text-center"><h6><i class="fas fa-times text-danger"></i></h6></td>
+                <% } else { %>
+                    <td></td>
+                <% } %>  
+                <% if(comp.rating == "Experienced" && comp.rating == comp.reqLevel){ %> 
+                    <td class=" text-center"><h6><i class="fas fa-check text-success"></i></h6></td>
+                <% } else if (comp.rating == "Experienced" && comp.rating !== comp.reqLevel){ %>
+                    <td class=" text-center"><h6><i class="fas fa-times text-danger"></i></h6></td>
+                <% } else { %>
+                    <td></td>
+                <% } %>  
+                <% if(comp.rating == "Master" && comp.rating == comp.reqLevel){ %> 
+                    <td class=" text-center"><h6><i class="fas fa-check text-success"></i></h6></td>
+                <% } else if (comp.rating == "Master" && comp.rating !== comp.reqLevel){ %>
+                    <td class=" text-center"><h6><i class="fas fa-times text-danger"></i></h6></td>
+                <% } else { %>
+                    <td></td>
+                <% } %>
+
+                <td class="border-start"></td>
+                <td></td>
+            </tr>
+        <% }) %> 
+    </tbody>
+  </table>

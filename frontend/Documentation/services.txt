@@ -1,0 +1,372 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	SERVICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	auth_services.js
+
+	*	login_user(string: email, string: password)
+			RETURN: 
+				SUCCESS: "string: access_token"
+				ERROR: error	 	
+		
+
+	*	logout_user(string: access_token)
+			RETURN: 
+				SUCCESS: "string: logout_message"
+				ERROR: error	 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	system_services.js
+		
+		%%%		GETERS		%%%%%%%%%%%%%%%	
+	*	get_exportList(string: access_token)
+			RETURN:
+				SUCCESS: array of objects 
+						objectModel = {
+							id: number,
+							file_name: string,
+							start_header: number,
+							required: boolean,
+							file_upload: null
+						}
+				ERROR: error
+				
+
+	*	get_aaCompetenceList(string: access_token)
+			RETURN:
+				SUCCESS: array of objects
+						objectModel = {
+							code: string,
+							name: string,
+							weight: number
+						}
+				ERROR: error
+		
+
+	*	get_aaCompetenceList(string: access_token)
+			RETURN:
+				SUCCESS: array of objects
+						objectModel = {
+							competence_id: number,
+							name: string,
+							type: string,
+							metier_org: string,
+							category: string,
+							domain: string,
+							weight: number
+						}
+				ERROR: error			
+
+
+		%%%		SETERS		%%%%%%%%%%%%%%%%%%%%%
+	*	set_default_weights(string: access_token, arrayOfObjects: weights, string: type)
+			DESCRIPTION:	This function requires "access_token" to verify user, "type" to determine
+						the type of input (If it will be RD or AA competences) and "weights" as a 
+						data in specific format to send.
+			
+			INPUTS_MODELS:
+				weights_objectModel_for_type_aa = {
+					code: string,
+					weight: string
+				}
+
+				weights_objectModel_for_type_rd = {
+					competence_id: string,
+					weight: string
+				}
+			RETURN:
+				SUCCESS: "array of objects" = inputed weights object model
+
+				ERROR:	error
+
+				
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	employees_services.js
+						
+		%%%		GETERS		%%%%%%%%%%%%%%%	
+	*	get_employee_list(string: access_token)
+			RETURN:
+				SUCCESS: array of objects 
+						objectModel = {
+							ps_id: number,
+							person_id: number,
+							first_name: string,
+							last_name: string,
+							email: string,
+							cadre: string,
+							full_part_time: string,
+							fte: string,
+							type_of_contract: string,
+							location: string,
+							orgaloc: string,
+							start_date: string,
+							bg: string,
+							pg: string,
+							pl: string,
+							tpl: string,
+							hn1: string,
+							hn2: string,
+							fn1: string,
+							hyperion: {
+								code: string,
+								name: string,
+								function: string
+							},
+							job: {
+								id: number,
+								code: string,
+								jobtitle: string,
+								metier_field: string,
+								metier: string
+							},
+							cc: {
+								code: string,
+								name: string,
+								owner: number
+							},
+							status: boolean
+						}
+				ERROR: error
+
+
+	*	get_filtered_employee(string: access_token, object: query)
+			INPUTS_MODELS:
+				query_objectModel = {
+					platform: string,
+					metierfield: string,
+					compType: string,
+					compCategory: string,
+					compDomain: string,
+					compMetier: string,
+					compName: string,
+					firstName: string,
+					lastName: string,
+					psID: '23051string,
+					orgaloc: string,
+					location: string,
+					hn1: string,
+					hn2: string,
+					aacompetence: arrayOfStrings
+				}
+	
+			RETURN:
+				SUCCESS: array of objects 
+						objectModel = {
+							ps_id: number,
+							person_id: number,
+							first_name: string,
+							last_name: string,
+							email: string,
+							cadre: string,
+							full_part_time: string,
+							fte: string,
+							type_of_contract: string,
+							location: string,
+							orgaloc: string,
+							start_date: string,
+							bg: string,
+							pg: string,
+							pl: string,
+							tpl: string,
+							hn1: string,
+							hn2: string,
+							fn1: string,
+							hyperion: {
+								code: string,
+								name: string,
+								function: string
+							},
+							job: {
+								id: number,
+								code: string,
+								jobtitle: string,
+								metier_field: string,
+								metier: string
+							},
+							cc: {
+								code: string,
+								name: string,
+								owner: number
+							},
+							status: boolean		
+						}
+				ERROR: error
+
+
+	*	get_RDcompetence_list(string: access_token)
+	
+			RETURN:
+				SUCCESS: object
+						objectModel = {
+							categories: arrayOfStrings,
+							domains: arrayOfStrings,
+							names: arrayOfStrings,
+							metiers: arrayOfStrings
+						}
+				ERROR: error
+
+
+	*	get_AAcompetence_list(string: access_token)
+	
+			RETURN:
+				SUCCESS: arrayOfStrings
+							
+				ERROR: error
+
+
+	*	get_RDcompetence_list(string: access_token)
+	
+			RETURN:
+				SUCCESS: arrayOfStrings
+				ERROR: error
+
+
+	*	get_AAcompetence_list(string: access_token)
+	
+			RETURN:
+				SUCCESS: arrayOfStrings
+				ERROR: error
+
+
+	*	get_metierFields_list(string: access_token)
+	
+			RETURN:
+				SUCCESS: arrayOfStrings
+				ERROR: error
+
+
+	*	get_platforms_list(string: access_token)
+	
+			RETURN:
+				SUCCESS: arrayOfStrings
+				ERROR: error
+
+
+	*	get_employee_detail(string: access_token, string: ps_id)
+						
+			RETURN:
+				SUCCESS: object
+						objectModel = {
+							ps_id: number,
+							person_id: number,
+							first_name: string,
+							last_name: string,
+							email: string,
+							cadre: string,
+							full_part_time: string,
+							fte: string,
+							type_of_contract: string,
+							location: string,
+							orgaloc: string,
+							start_date: string,
+							bg: string,
+							pg: string,
+							pl: string,
+							tpl: string,
+							hn1: string,
+							hn2: string,
+							fn1: string,
+							hyperion: {
+								code: string,
+								name: string,
+								function: string
+							},
+							job: {
+								id: number,
+								code: string,
+								jobtitle: string,
+								metier_field: string,
+								metier: string
+							},
+							cc: {
+								code: string,
+								name: string,
+								owner: number
+							},
+							status: boolean	
+						}
+				ERROR: error
+
+
+	*	get_AAcompetence_detail(string: access_token, string: ps_id)
+	
+			RETURN:
+				SUCCESS: arrayOfObjects
+					objectModel = {
+						id: number,
+						employee: string,
+						competence: { 
+							code: string, 
+							name: string, 
+							weight: number 
+						},
+						appraisal_id: string,
+						year: number,
+						from_date: string,
+						to_date: string,
+						interview_date: string,
+						stage: string,
+						status: string,
+						rating: string,
+						expected_lvl: string,
+						create_date: string
+					}
+				ERROR: error
+
+
+	*	get_RDcompetence_detail(string: access_token, string: ps_id)
+	
+			RETURN:
+				SUCCESS: arrayOfObjects
+					objectModel = {
+						id: number,
+						employee: string,
+						platform: { 
+							platform_id: number, 
+							name: string },
+						metier_field: {
+							metier_field_id: number,
+							name: string,
+							bg: string
+						},
+						competence: {
+							competence_id: number,
+							name: string,
+							type: string,
+							metier_org: string,
+							category: string,
+							domain: string,
+							weight: number
+						},
+						expected_lvl: number,
+						manager_expected_lvl: number,
+						acquired_lvl: number,
+						gap: number,
+						coverage: number,
+						create_date: string	
+					}
+				ERROR: error
+
+
+	*	get_aspirationCandidates(string: access_token, string: ps_id, arrayOfObjects: competenceWeights)
+			INPUTS_MODELS:
+				competenceWeights_objectModel = {
+					competence_id: string,
+					weight: string
+				}
+			RETURN:
+				SUCCESS: arrayOfObjects
+					objectModel = {
+						ps_id: number,
+						first_name: string,
+						last_name: string,
+						approximity_points: number
+					}
+				ERROR: error

@@ -1,0 +1,76 @@
+<!-- INFOMENU -->
+<style>
+    .infoMenu {
+        position: absolute;
+        left: 0;
+        z-index: 5;
+        width: 30%;
+        box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.137);
+    }
+
+    #infoMenu {
+        border-top: 4px solid rgb(133, 230, 43);
+    }
+    
+    @media only screen and (max-width: 900px) {
+    
+        .infoMenu{
+            width: 100%;
+        }
+    
+    }
+    </style>
+    
+    
+    <div class="infoMenu d-flex flex-column align-items-stretch bg-white mx-0">
+        <div id="infoMenu" class="collapse list-group list-group-flush border-bottom scrollarea pb-1">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <i class="fas fa-user-cog m-2 fs-1"></i>
+                    </div>
+                    <hr class="mx-4">
+                    <div class="mx-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Loged in as:</h5>
+                            </div>
+                            <div class="col-6 text-muted">
+                                <h6><%= email %></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>My user roles:</h5>
+                            </div>
+                            <div class="col-6 text-muted">
+                                <h6>User role 1</h6>
+                                <h6>User role 2</h6>
+                                <h6>User role 3</h6>
+                                <h6>User role 4</h6>
+                                <h6>User role 5</h6>
+                                <h6>User role 6</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border border-3 border-dark mx-1">
+                    <div class="d-flex justify-content-center">
+                        <i class="fas fa-database m-2 fs-1"></i>
+                    </div>
+                    <hr class="mx-4">
+                    <div class="mx-4">
+                        <div class="row mb-1">
+                            <div class="col-6 d-flex align-items-center">
+                                <h5>Last DB update:</h5>
+                            </div>
+                            <div class="col-6 d-flex align-items-center justify-content-center">
+                                <%- include("../customCalendar/customCalendar") %>
+                                <!-- <h5 class="mb-3"><i class="far fa-calendar"></i> 2/8/2022</h5> -->
+                                <!-- <h5><i class="far fa-clock"></i> 15:44</h5> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

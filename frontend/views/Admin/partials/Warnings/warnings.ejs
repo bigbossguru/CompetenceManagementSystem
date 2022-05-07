@@ -1,0 +1,24 @@
+<div class="container collapse mt-3 shadow" id="warnings">
+    <div class="row">
+        <h1 class="mt-2">Warnings</h1>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <% if (warnings.length){ %>
+                <% warnings.forEach(warning => { %>
+                    <div class="alert alert-<%= warning.type %>  alert-dismissible fade show d-flex justify-content-between" role="alert">
+                        <div>
+                            <strong><%= warning.title %></strong>
+                            <p><%= warning.message %></p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button class="btn btn-success" type="submit">Okay</button> 
+                        </div>
+                    </div>
+                <% }) %>  
+            <% } else { %>
+                <h5 class="d-flex justify-content-center">There are no warnings <i class="fas fa-smile-beam mx-3" style="color: rgb(29, 168, 248);"></i></h5>
+            <% } %> 
+        </div>
+    </div>
+</div>

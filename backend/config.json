@@ -1,0 +1,35 @@
+{
+    "spreadsheet": {
+        "count": 6,
+        "filename": [
+            "ca",
+            "aa_full",
+            "master",
+            "aa_competence",
+            "ps",
+            "cda"
+        ],
+        "startheader": {
+            "aa_competence": 0,
+            "aa_full": 2,
+            "ca": 1,
+            "master": 0,
+            "ps": 1,
+            "cda": 0
+        }
+    },
+    "email": [
+        "admin@admin.com"
+    ],
+    "path": "",
+    "data_time": {
+        "start_month": {
+            "time": "8:30",
+            "day": "1-5"
+        },
+        "end_month": {
+            "time": "8:30",
+            "day": "15-17"
+        }
+    }
+}

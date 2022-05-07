@@ -1,0 +1,20 @@
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="row">
+      <% aaCompetenceList.forEach( item => { %>
+        <div class="col-6 col-lg-4 my-1">
+          <div class="form-check">
+            <input class="form-check-input" name="aacompetence" value="<%= item %>" type="checkbox" id="<%= item %>">
+            <label class="form-check-label checkbox-hover" for="<%= item %>">
+              <%= item %> 
+            </label>
+          </div>
+        </div>
+      <% }) %> 
+    </div>
+</div>
+
+<style>
+.checkbox-hover:hover {
+  cursor: pointer;
+}
+</style>

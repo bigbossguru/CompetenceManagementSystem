@@ -1,0 +1,42 @@
+<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+  <div class="row d-flex justify-content-end">
+    <div class="col-4 text-end">
+      <button class="btn btn-primary" id="button" type="submit" form="rdCompetenceWeights">SAVE R&D CHANGES</button>
+    </div>
+  </div>
+
+  <form action="/settings/defCompWeightsSetup/" id="rdCompetenceWeights" method="POST">
+    <div class="row py-4">
+      <table class="display" id="rdTable">
+        <thead class="text-center">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Metier field</th>
+            <th scope="col">Domain</th>
+            <th scope="col">Name</th>
+            <th scope="col">Weight<i class="fas fa-balance-scale-right ms-2 fs-6"></i></th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <% i = 0 %> 
+          <% rdData.forEach( item => { %>
+            <% i++ %> 
+            <tr>
+              <th scope="row"><%= item.competence_id %></th>
+              <td><%= item.metier_org %></td>
+              <td><%= item.domain %></td>
+              <td><%= item.name %></td>
+              <td class="d-flex">
+                <input type="range" class="form-range" min="0" max="10" step="1" value="<%= item.weight %>" name="<%= item.competence_id %>" onchange="updateNumRDInput(this.value, <%= i %>);">
+                <input type="text" class="ms-2 form-control rounded-circular" style="max-width: 50px;" id="RDnumber<%= i %>" value="<%= item.weight %>" readonly>
+              </td>
+            </tr>
+          <% }) %> 
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
+
+

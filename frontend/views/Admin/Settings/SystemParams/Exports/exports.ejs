@@ -1,0 +1,97 @@
+<div class="list-exports container-fluid container-md mt-5 mb-5">
+    <div class="d-flex justify-content-between" id="messageBox">
+        <h2>Export list <i class="fas fa-outdent mx-2"></i></h2>
+    </div>
+    <hr class="m-0">
+    <div class="container-fluid container-md p-0 tableResponsive">
+        <div id="listExports" class="row">
+            <div class="col-12">
+                <table class="table table-light table-striped table-hover table-bord" style="min-width: 600px;">
+                    <thead class="table-dark">
+                      <tr class="text-center">
+                        <th scope="col">ID</th>
+                        <th scope="col">Export name</th>
+                        <th scope="col">Relevancy</th>
+                        <th scope="col">Upload</th>
+                        <th scope="col">State</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% let i = 0 %> 
+                    <% exports.forEach(file => { %> 
+                        <% i++ %> 
+                      <tr class="text-center">
+                        <td><%= file.id %></td>
+                        <td><%= file.file_name %></td>
+                        <% if (file.required){ %> 
+                            <td><i class="fas fa-check-circle"></i></td>
+                        <% } else { %>
+                            <td><i class="fas fa-times-circle"></i></td>
+                        <% } %>
+                        <td class="input-group">
+                            <form action="/settings/systemParameterSetup/addExport/<%= file.file_name %>" method="POST" class="d-flex exportList w-100" id="forma<%= i %>">
+                                <input type="number" name="start_header" class="form-control w-25" placeholder="Start header">
+                                <input type="file" name="files_upload" class="form-control">
+                                <button class="btn btn-outline-primary" type="submit" form="forma<%= i %>">Upload</button>
+                            </form>
+                        </td>
+                        <td><i class="fas fa-check"></i></td>
+                      </tr>
+                    <% }) %> 
+                    </tbody>
+                  </table>            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    const access_token = document.cookie.split(";")[1].split("=")[1];
+    for(let i = 1; i < document.getElementsByClassName("exportList").length + 1; i++){
+        fileUploader(`#forma${i}`, access_token);
+    }
+    
+    function fileUploader(id, access_token){
+        const form = document.querySelector(id);
+
+        form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        axios.post("http://localhost:8000/api/v1/upload/", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: "JWT " + access_token
+            },
+            })
+            .then((res) => {
+                const messageBox = document.getElementById("messageBox");
+                const messageElement = document.createElement("div");
+                const strongText = document.createElement("strong");
+                const button = document.createElement("button");
+
+                //MessageElement Settings
+                messageElement.className += "alert alert-dismissible fade m-0 fs-5 alert-success show";
+                messageElement.id += "alertMessage";
+                messageElement.setAttribute("role", "alert");
+                //Text settings
+                strongText.innerHTML += "File uploaded successfully!";
+                //Button settings
+                button.className += "btn-close";
+                button.setAttribute("type", "button");
+                button.setAttribute("data-bs-dismiss", "alert");
+                button.setAttribute("aria-label", "Close");
+
+                messageElement.appendChild(strongText);
+                messageElement.appendChild(button);
+                messageBox.appendChild(messageElement);
+            })
+            .catch((err) => {
+                document.getElementById("alertMessage").className += " alert-danger show";
+                document.getElementById("message").innerHTML += "File uploaded successfully!";
+            });
+    });
+    }
+  </script>

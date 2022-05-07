@@ -1,0 +1,71 @@
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="row">
+      <div class="col-4 my-2">
+        <label for="platform"><strong>Platform</strong></label>
+        <input list="platforms" name="platform" id="platform" class="form-control" placeholder="Platform">
+        <datalist id="platforms">
+            <% platforms.forEach(type => { %>
+              <option value="<%= type %> "></option>
+            <% }) %>  
+        </datalist>
+      </div>
+      <div class="col-4 my-2">
+        <label for="metierfield"><strong>Metier field</strong></label>
+        <input list="metierfields" name="metierfield" id="metierfield" class="form-control" placeholder="Metier field">
+        <datalist id="metierfields">
+            <% metierfields.forEach(type => { %>
+              <option value="<%= type %> "></option>
+            <% }) %>  
+        </datalist>
+      </div>
+      <div class="col-4 my-2">
+        <label for="compType"><strong>Competence type</strong></label>
+        <input list="compTypes" name="compType" id="compType" class="form-control" placeholder="Competency type">
+        <datalist id="compTypes">
+            <% rdCompetenceList.types.forEach(type => { %>
+              <option value="<%= type %> "></option>
+            <% }) %>  
+        </datalist>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 my-2">
+        <label for="compCategory"><strong>Competence category</strong></label>
+        <input list="compCategories" name="compCategory" id="compCategory" class="form-control" placeholder="Competence category">
+        <datalist id="compCategories">
+            <% rdCompetenceList.categories.forEach(category => { %>
+              <option value="<%= category %> "></option>
+            <% }) %>  
+        </datalist>
+      </div>
+      <div class="col-4 my-2">
+        <label for="compDomain"><strong>Competence domain</strong></label>
+        <input list="compDomains" name="compDomain" id="compDomain" class="form-control" placeholder="Competence domain">
+        <datalist id="compDomains">
+            <% rdCompetenceList.domains.forEach(domain => { %>
+              <option value="<%= domain %> "></option>
+            <% }) %>  
+        </datalist>
+      </div>
+      <div class="col-4 my-2">
+        <label for="compMetier"><strong>Competence metier</strong></label>
+        <input list="compMetiers" name="compMetier" id="compMetier" class="form-control" placeholder="Competence metier">
+        <datalist id="compMetiers">
+            <% rdCompetenceList.metiers.forEach(metier => { %>
+              <option value="<%= metier %>"></option>
+            <% }) %>  
+        </datalist>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 my-2">
+        <label for="compName"><strong>Competence name</strong></label>
+        <input list="compNames" name="compName" id="compName" class="form-control" placeholder="Competence name">
+        <datalist id="compNames">
+            <% rdCompetenceList.names.forEach(name => { %>
+              <option value="<%= name %> "></option>
+            <% }) %>  
+        </datalist>
+      </div>
+    </div>
+  </div>

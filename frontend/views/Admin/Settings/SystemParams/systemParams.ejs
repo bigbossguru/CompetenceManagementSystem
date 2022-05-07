@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>System parameters SetUp</title>
+</head>
+<body>
+<!-- Navigation Bar -->
+<%- include("../../partials/NavigationBar/navigationBar") %> 
+
+<!-- Side Info Menu -->
+<%- include("../../partials/SideBar/sideBar") %> 
+
+<!-- Info Menu -->
+<%- include("../../partials/InfoMenu/infoMenu") %> 
+
+<!-- Warnings -->
+<%- include("../../partials/Warnings/warnings") %>  
+
+<!-- Bread Crumb -->
+<%- include("./BreadCrumbs/breadCrumbSystemSetup") %>  
+
+<!-- System STP -->
+<div class="system-setup container-fluid container-md mt-5">
+    <div class="row">
+        <div class="col-12 d-flex">
+            <h2>System parameters SetUp</h2>
+            <i class="fas fa-cogs mx-2"></i>
+        </div>
+    </div>
+    <hr>
+    <form action="#" method="#">
+        <div class="row p-4 p-md-0">
+            <div class="col-12 col-md-5">
+                <label for="par1"><strong>System parameter 1</strong></label>
+                <select id="par1" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par2"><strong>System parameter 2</strong></label>
+                <select id="par2" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par3"><strong>System parameter 3</strong></label>
+                <select id="par3" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par4"><strong>System parameter 4</strong></label>
+                <select id="par4" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par5"><strong>System parameter 5</strong></label>
+                <select id="par5" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+            </div>
+            <div class="col-0 col-md-2"></div>
+            <div class="col-12 col-md-5">
+                <label for="par1"><strong>System parameter 6</strong></label>
+                <select id="par1" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par2"><strong>System parameter 7</strong></label>
+                <select id="par2" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par3"><strong>System parameter 8</strong></label>
+                <select id="par3" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par4"><strong>System parameter 9</strong></label>
+                <select id="par4" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+                <label for="par5"><strong>System parameter 10</strong></label>
+                <select id="par5" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Default parameter</option>
+                    <option value="1">Property 1</option>
+                    <option value="2">Property 2</option>
+                    <option value="3">Property 3</option>
+                </select>
+            </div>
+            <div class="row d-flex justify-content-center my-3">
+                <button type="submit" class="btn btn-primary w-50" style="max-width: 200px;">
+                    SAVE
+                </button>
+            </div>
+        </div>
+    </form>
+    <hr class="border border-2 border-dark">
+</div>
+
+<!-- List of Exports -->
+<%- include("./Exports/exports") %> 
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+

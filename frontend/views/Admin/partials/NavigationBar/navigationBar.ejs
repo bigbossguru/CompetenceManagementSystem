@@ -1,0 +1,55 @@
+<style>
+
+nav .info {
+    background-color: white;
+}
+
+nav .fas, .fab {
+    margin: 0px 10px;
+    color: rgb(72, 68, 75);
+    font-size: 22px;
+}
+
+</style>
+<nav class="navbar filters shadow-sm">
+    <div class="container">
+        
+        <div>
+            <a href="/menu" style="text-decoration: none">
+                <!-- <img class="img" src="/images/Valeo_Logo.png" style="height: 50px;"> -->
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="/auth/logout" style="text-decoration: none">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+
+        <div class="d-flex bd-highlight">
+            <button 
+                class="ms-auto p-2 bd-highlight info border border-0"
+                data-bs-toggle="collapse" 
+                data-bs-target="#warnings"  
+                aria-controls="warnings"
+                >
+                <i class="fas fa-exclamation-triangle"></i>
+            </button>
+            <button 
+                class="ms-auto p-2 bd-highlight info border border-0"
+                data-bs-toggle="collapse" 
+                data-bs-target="#sideMenu"  
+                aria-controls="sideMenu"
+                >
+                <i class="fas fa-newspaper"></i>
+            </button>
+            <button 
+                class="ms-auto p-2 bd-highlight info border border-0"
+                data-bs-toggle="collapse" 
+                data-bs-target="#infoMenu"  
+                aria-controls="infoMenu"
+                >
+                <i class="fas fa-info-circle"></i>
+            </button>
+        </div>
+        
+    </div>
+</nav>

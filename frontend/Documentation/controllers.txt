@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	CONTROLLERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	auth_controllers.js
+
+	*	authenticate_user(req, res)
+            DESCRIPTION: Creates property "access_token" in res.cookie object and render MENU page 
+            "Admin/AdminMenu/menu", menuType = "main".	 	
+		
+
+	*	logout_user(req, res)
+			DESCRIPTION: Delete property "access_token" from res.cookie object and render LOGIN page
+            "login".
+
+  
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	error_controllers.js
+            
+    *	handle_error_message(req, res)
+            DESCRIPTION: If any error occures it will log it to the console and redirects to MENU page
+            "./Admin/AdminMenu/menu".	 	
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	menu_controllers.js
+                        
+    *	get_mainMenu(req, res)
+            DESCRIPTION: Render MENU page "./Admin/AdminMenu/menu", menuType = "main". 
+            
+    *	get_settingsMenu(req, res)
+            DESCRIPTION: Render MENU page "./Admin/AdminMenu/menu", menuType = "settings".
+
+    *	get_reportsMenu(req, res)
+            DESCRIPTION: Render MENU page "./Admin/AdminMenu/menu", menuType = "reports".
+
+    !If any error occures this funcs. will automaticly log it to the console and redirects back to last page!
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	settings_controllers.js
+                                    
+    *	get_setup(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_exportList and render page
+            "./Admin/Settings/SystemParams/systemParams"
+                        
+    *	get_weights(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_(aa/rd)CompetenceList and render page
+            "./Admin/Settings/CompWeights/compWeights"
+            
+    *	set_weights(req, res)
+            INPUTS_MODELS:
+                weights_objectModel_for_type_aa = {
+                    code: string,
+                    weight: string
+                }
+
+                weights_objectModel_for_type_rd = {
+                    competence_id: string,
+                    weight: string
+                }
+            DESCRIPTION: Send weightsArray of objects using "weights_objectModel_for_type_(aa/rd)" and redirect back.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%	reports_controllers.js
+
+    *	get_overview(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_AAcompetence_list, SERVICES.get_RDcompetence_list,
+            SERVICES.get_metierFields_list, SERVICES.get_platforms_list and get_employee_list and render page
+            "./Admin/Reports/Overview/overview".
+
+    *   get_overview_detail(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_AAcompetence_detail, SERVICES.get_RDcompetence_detail, SERVICES.get_employee_detail.
+            Then it uses private function in REPORTS_CONTROLLERS named "matchAndSort(arrayOfStrings, arrayOfStrings)", where input one is 
+            array of names of competencies whose should be in resulting data and second input is array of names of all competencies. In the 
+            end it will render page "./Admin/Reports/Overview/overviewDetail".
+
+    *   filter_employees(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_AAcompetence_list, SERVICES.get_RDcompetence_list, SERVICES.get_metierFields_list and
+            SERVICES.get_platforms_list. Then gets data from user search and use SERVICES.get_filtered_employee_list to get filtered employees.
+            In the end it will render page "./Admin/Reports/Overview/overview".
+
+    *   get_aspiration(req, res)
+            DESCRIPTION: It will render page "./Admin/Reports/Aspiration/aspiration".
+        
+    *   get_aspirationEmployee(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_employee_detail, SERVICES.get_AAcompetence_detail and SERVICES.get_RDcompetence_detail.
+            Then it selects just needed data from these complex data and then it forms those data to dataShape that is matching input of
+            SERVICES.get_aspirationCandidates. After that it render page "./Admin/Reports/Aspiration/aspiration".
+
+    *   get_aspiration_detail(req, res)
+            DESCRIPTION: Gets data using SERVICES.get_AAcompetence_detail, SERVICES.get_RDcompetence_detail, SERVICES.get_employee_detail.
+            Then it uses private function in REPORTS_CONTROLLERS named "matchAndSort(arrayOfStrings, arrayOfStrings)", where input one is 
+            array of names of competencies whose should be in resulting data and second input is array of names of all competencies. In the 
+            end it will render page "./Admin/Reports/Aspiration/aspirationDetail".

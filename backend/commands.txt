@@ -1,0 +1,11 @@
+$ docker-compose down -v
+
+$ docker-compose -f docker-compose.yml up -d --build
+$ docker-compose -f docker-compose.yml exec backend python manage.py migrate --noinput
+$ docker-compose -f docker-compose.yml exec backend python manage.py collectstatic --no-input --clear
+$ docker exec -it <container_name> sh
+$ docker exec -it <container_name> sh -c "python manage.py createsuperuser"
+
+
+$ celery -A core worker --loglevel=INFO
+$ celery -A core beat --loglevel=INFO

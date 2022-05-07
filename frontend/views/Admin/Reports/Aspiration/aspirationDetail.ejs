@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="../script.js"></script>
+    <title>Employee <%= data.id %></title>
+</head>
+<body>
+<!-- Navigation Bar -->
+<%- include("../../partials/NavigationBar/navigationBar") %> 
+
+<!-- Side Info Menu -->
+<%- include("../../Partials/SideBar/sideBar") %> 
+
+<!-- Info Menu -->
+<%- include("../../Partials/InfoMenu/infoMenu") %> 
+
+<!-- Warnings -->
+<%- include("../../Partials/Warnings/warnings") %>  
+
+<!-- Bread Crumb -->
+<%- include("./BreadCrumbs/breadCrumbInDetail") %>  
+
+<!-- Employee -->
+<div class="container-fluid container-md mt-3">
+    <div class="row mt-5 mb-5">
+        <!-- User icon side -->
+        <div class="col-12 col-lg-3 p-1 text-center" style="border-bottom: 5px solid rgb(120, 224, 0);">
+            <i class="fas fa-user display-1"></i>
+            <div class="row mt-5">
+                <div class="col-3 text-end">
+                    <h5 class="my-1"><i class="fas fa-envelope"></i></h5>
+                    <h5 class="my-1"><i class="fas fa-map-marker-alt"></i></h5>
+                    <h5 class="my-1"><i class="fas fa-info"></i></h5>
+                </div>
+                <div class="col-6 text-secondary text-start">
+                    <% if(data.email){ %> 
+                        <h6 class="my-2"><%= data.email %></h6>
+                    <% } else { %>
+                        <h6 class="my-2">-</h6>
+                    <% } %> 
+                    <% if(data.location){ %>  
+                        <h6 class="my-2"><%= data.location %></h6>
+                    <% } else { %>
+                        <h6 class="my-2">-</h6>
+                    <% } %> 
+                    <h6 class="my-2" data-bs-toggle="collapse" href="#employeeInfo" role="button" aria-expanded="false" aria-controls="employeeInfo">Employee info <i class="fas fa-angle-down"></i></h6>
+                </div>
+            </div>
+
+            <!-- Hidden INFO -->
+            <div class="row collapse p-2 rounded m-0" id="employeeInfo" style="background-color: rgba(0, 0, 0, 0.062);">
+                <div class="col-6 col-lg-12 text-end">
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>Person ID: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.person_id){ %>  
+                                <h6><%= data.person_id %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>PS ID: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.ps_id){ %>   
+                                <h6><%= data.ps_id %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>Contract </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.type_of_contract){ %>   
+                                <h6><%= data.type_of_contract %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>FPT: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.full_part_time){ %>   
+                                <h6><%= data.full_part_time %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>Orgaloc: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.orgaloc){ %>   
+                                <h6><%= data.orgaloc %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-12 text-end">
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>FTE: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.fte){ %>  
+                                <h6><%= data.fte %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>BG: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.bg){ %>   
+                                <h6><%= data.bg %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>PG: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.pg){ %>   
+                                <h6><%= data.pg %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>PL: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.pl){ %>  
+                                <h6><%= data.pl %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>TPL: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.tpl){ %>  
+                                <h6><%= data.tpl %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-end">
+                            <h6><strong>TPL owner: </strong></h6>
+                        </div>
+                        <div class="col-6 text-start">
+                            <% if(data.tpl_owner){ %>  
+                                <h6><%= data.tpl_owner %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Base info or middle part -->
+        <div class="col-12 col-lg-7 ms-4">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="my-2"><%= data.first_name %> <%= data.last_name %></h2>
+                    <h5 class="text-secondary"><strong>Cadre: </strong><%= data.cadre %></h5>
+                </div>
+                <div class="col-6 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-info-circle display-5"></i>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-3 text-end">
+                            <h6><strong>Job: </strong></h6>
+                        </div>
+                        <div class="col-8 text-secondary">
+                            <% if(data.jobtitle){ %>  
+                                <h6><%= data.job.jobtitle %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-end">
+                            <h6><strong>Cc: </strong></h6>
+                        </div>
+                        <div class="col-8">
+                            <% if(data.cc.name){ %>  
+                                <h6><%= data.cc.name %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-end">
+                            <h6><strong>Hyperion: </strong></h6>
+                        </div>
+                        <div class="col-8">
+                            <% if(data.hyperion.name){ %>  
+                                <h6><%= data.hyperion.name %></h6>
+                            <% } else { %>
+                                <h6>-</h6>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-3 text-end">
+                                    <h6><strong>Status: </strong></h6>
+                                </div>
+                                <div class="col-8">
+                                    <% if (data.status){ %>
+                                        <h6><i class="fas fa-check text-success"></i></h6>
+                                    <% } else { %>
+                                        <h6><i class="fas fa-times text-danger"></i></h6>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 text-end">
+                                    <h6><i class="fas fa-angle-double-up"></i><strong> HN2: </strong></h6>
+                                </div>
+                                <div class="col-8">
+                                    <% if (data.hn2){ %> 
+                                        <h6><%= data.hn2 %></h6>
+                                        <% } else { %>
+                                            <h6>-</h6>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 text-end">
+                                    <h6><i class="fas fa-angle-up"></i><strong> HN1: </strong></h6>
+                                </div>
+                                <div class="col-8">
+                                    <% if (data.hn1){ %>  
+                                        <h6><%= data.hn1 %></h6>
+                                        <% } else { %>
+                                            <h6>-</h6>
+                                        <% } %> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<hr>
+
+<!-- TABLES -->
+
+    <div class="row p-2 rounded" style="background-color: rgba(0, 0, 0, 0.137);">
+        <h2>Annual apraisal</h2>
+        <% if (generalComp.length && managementComp.length && softSkills.length){ %> 
+            <%- include("./AATables/generalComp") %>
+            <hr class="my-3" style="border: 2px solid rgba(0, 0, 0, 0.993); margin: 0;">
+            <%- include("./AATables/managementComp") %>
+            <hr class="my-3" style="border: 2px solid rgba(0, 0, 0, 0.993); margin: 0;">
+            <%- include("./AATables/softSkills") %>
+        <% } else { %>
+            <h5 class="text-center">Employee has no AA competence...</h5>
+        <% } %> 
+    </div>
+
+<hr class="my-5">
+
+    <div class="row p-2 rounded mb-5" style="background-color: rgba(0, 0, 0, 0.137);">
+        <h3>R&D Competence</h3>
+        <%- include("./RDTables/rdTable") %>
+    </div>
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>

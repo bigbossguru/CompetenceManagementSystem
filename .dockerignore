@@ -1,0 +1,6 @@
+# Not necessary files
+__pycache__/
+docs/
+.venv/
+venv/
+resource/

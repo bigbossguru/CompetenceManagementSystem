@@ -1,0 +1,33 @@
+<table class="table table-light table-striped table-hover table-bord" style="min-width: 600px;">
+    <thead class="table-dark">
+      <tr class="text-center">
+        <th scope="col">ID</th>
+        <th scope="col">Export name</th>
+        <th scope="col">Relevancy</th>
+        <th scope="col">Start header</th>
+        <th scope="col">Upload</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% exports.forEach(file => { %> 
+      <tr class="text-center">
+        <th scope="row"><%= file.id %></th>
+        <td><%= file.file_name %></td>
+        <% if (file.required){ %> 
+            <td><i class="fas fa-check-circle"></i></td>
+        <% } else { %>
+            <td><i class="fas fa-times-circle"></i></td>
+        <% } %>
+        <form class="" action="/settings/systemParameterSetup/addExport/<%= file.file_name %>" method="POST" enctype="multipart/form-data">
+            <td style="max-width: 100px;"><input class="form-control" type="number" name="start_header" placeholder="Start header"></td>
+            <td class="input-group">
+                <input type="file" name="files_upload" class="form-control">
+                <button class="btn btn-outline-primary" type="submit">Upload</button>
+            </td>
+        </form>
+        <td><i class="fas fa-check"></i></td>
+      </tr>
+    <% }) %> 
+    </tbody>
+  </table> 
